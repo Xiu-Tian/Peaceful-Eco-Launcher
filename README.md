@@ -2,9 +2,17 @@
 
 **Peaceful Eco Launcher（PEL）** 是面向 Minecraft Java 版的 Windows 启动器，提供游戏安装、实例管理、资源下载、Java 管理、账户登录和临时联机功能。
 
-- **当前版本：1.0.5 Beta**
+- **当前版本：1.0.6 Beta**
 - **适用平台：Windows x64**（推荐 Windows 10 / 11）
 - [下载发行版](https://github.com/Xiu-Tian/Peaceful-Eco-Launcher/releases) · [项目主页](https://github.com/Xiu-Tian/Peaceful-Eco-Launcher)
+
+## 1.0.6 Beta 更新
+
+- **下载性能提升：**优化下载调度与资源传输流程，显著提升游戏及整合包资源的下载效率。
+- **崩溃问题修复：**修复可能导致启动器异常退出的问题，提升运行稳定性。
+- **界面体验优化：**调整部分界面的布局与视觉细节，让操作更清晰顺手。
+- **版本信息缓存：**已读取的版本详情会保存在本机；再次打开时先显示缓存，过期后在后台刷新，不阻塞页面操作。
+- **其他问题修复：**修复若干已知问题，进一步提升启动器稳定性。
 
 ## 1.0.5 Beta 更新
 
@@ -17,6 +25,8 @@
 - 整合包导入可浏览并添加安装目录，之后会记住最近使用的位置。
 - 修复取消下载时进度圆内状态文字溢出的问题。
 - 修正 PCL2 快捷方式目录识别，避免把快捷方式的“起始位置”误认为游戏目录。
+- 修复以管理员权限启动时因 WinForms 异常模式设置过晚而崩溃的问题。
+- 优化启动器更新检查：优先读取静态更新清单，GitHub API 不可用时回退，并显示更清晰的 HTTP 错误与限流原因。
 - 修复若干问题，提升启动器稳定性。
 
 ### 1.0.4 Beta
@@ -26,6 +36,10 @@
 - 修复若干问题，提升启动器稳定性。
 
 ## 功能概览
+
+共享下载器支持跨重试和重启的 HTTP 断点续传；实现、缓存清理和测试说明见 [HTTP 断点续传](docs/download-resume.md)。
+
+Minecraft 下载器第一轮优化已处理 Fabric Maven 错误候选和慢元数据等待，并将客户端、Libraries、Assets 文件下载合并到共享限流池。任务会输出网络、排队、重试、检查点、SHA1 校验及安装耗时；实现边界、测试结果和后续计划见 [下载性能诊断](docs/download-performance-review.md)。
 
 ### 游戏、实例与 Java
 
@@ -65,7 +79,7 @@ PEL 可以管理多个 `.minecraft` 目录，并合并显示其中的游戏版�
 - Microsoft 登录通过系统浏览器完成，不需要在 PEL 中输入 Microsoft 密码。
 - 支持深色 / 浅色主题、启动器日志、诊断信息导出和反馈附件。
 - 内置网页与启动器功能隔离；游戏日志需由用户手动复制，不会自动发送到网页。
-- 启动时会检查进程完整性级别。检测到低完整性时自动执行内置修复；检测到以管理员权限运行时，会尝试通过 Windows 桌面 Shell 或 Windows 提供的关联普通令牌重启。WebView2 不支持人工受限令牌，PEL 不再使用这种方式。若当前账户没有真实的普通权限令牌，启动器会提示使用普通 Windows 用户登录。临时修复脚本会自动删除，不修改系统权限设置。
+- 启动时会检查进程完整性级别。检测到低完整性时才执行内置修复；检测到以管理员权限运行时，会尝试通过 Windows 桌面 Shell 或 Windows 提供的关联普通令牌重启。WebView2 不支持人工受限令牌，PEL 不再使用这种方式。若当前账户没有真实的普通权限令牌，启动器会提示使用普通 Windows 用户登录。临时修复脚本会自动删除，不修改系统权限设置。
 
 ## 临时联机
 
@@ -120,12 +134,4 @@ node scripts/get-tcc.mjs
 npm run build
 ```
 
-构建产物为 `build\PeacefulEcoLauncher.exe`。构建脚本会下载所需的 WebView2、Roslyn 和 TinyCC 构建依赖；这些构建工具不需要随发行版提供。
-
-中文资源名称索引及搜索行为参考 PCL-CE。相关来源与 Apache License 2.0 文本随构建产物提供，详见 `PCL-CE-SEARCH-NOTICE.txt` 和 `PCL-CE-APACHE-2.0.txt`。
-
-## 作者
-
-**EMOCHAN · F1xSky**
-
-感谢 Minecraft、Modrinth、CurseForge、PCL-CE、EasyTier 及相关开源项目和资源作者。
+构建产物为 `build\PeacefulEcoLauncher.exe`。构建脚本会下载所需的 WebView2、Roslyn 和 Tiny
