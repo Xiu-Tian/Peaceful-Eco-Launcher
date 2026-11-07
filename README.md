@@ -37,8 +37,6 @@
 
 ## 功能概览
 
-共享下载器支持跨重试和重启的 HTTP 断点续传；实现、缓存清理和测试说明见 [HTTP 断点续传](docs/download-resume.md)。
-
 Minecraft 下载器第一轮优化已处理 Fabric Maven 错误候选和慢元数据等待，并将客户端、Libraries、Assets 文件下载合并到共享限流池。任务会输出网络、排队、重试、检查点、SHA1 校验及安装耗时；实现边界、测试结果和后续计划见 [下载性能诊断](docs/download-performance-review.md)。
 
 ### 游戏、实例与 Java
