@@ -104,18 +104,6 @@ PEL 联机目前支持 **Windows x64 和 Minecraft Java 版**。房主创建房�
 - **联机桥接失败**：查看 `Launcher\multiplayer\logs\bridge.log`、`easytier.err.log` 和 EasyTier 日志。
 - **提交反馈**：通过启动器内的反馈入口描述复现步骤，并按需附上诊断日志或截图。发送前请确认附件内容适合分享。
 
-## 开发者构建
-
-在 Windows x64 环境安装 Node.js 20 或更高版本，并确保网络可访问后，在项目目录运行：
-
-```powershell
-npm run setup:vendor
-node scripts/get-tcc.mjs
-npm run build
-```
-
-构建产物为 `build\PeacefulEcoLauncher.exe`。构建脚本会下载所需的 WebView2、Roslyn 和 TinyCC 构建依赖；这些构建工具不需要随发行版提供。
-
 ## GitHub 发布与自动更新
 
 PEL 启动时会检查更新，优先读取公开仓库中的静态清单：[`assets/update-manifest.json`](https://raw.githubusercontent.com/Xiu-Tian/Peaceful-Eco-Launcher/main/assets/update-manifest.json)。静态清单不可用时会回退到 GitHub Releases API。检查到新版后，用户仍需在启动器中确认下载，并点击重启安装；下载的 EXE 会先按 SHA-256 校验，通过后才替换旧版本。
