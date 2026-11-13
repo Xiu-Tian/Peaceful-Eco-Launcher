@@ -2,21 +2,16 @@
 
 **Peaceful Eco Launcher（PEL）** 是面向 Minecraft Java 版的 Windows 启动器，提供游戏安装、实例管理、资源下载、Java 管理、账户登录和临时联机功能。
 
-- **当前版本：1.0.9 Beta**
+- **当前版本：1.1.0 Beta**
 - **适用平台：Windows x64**（推荐 Windows 10 / 11）
 - [下载发行版](https://github.com/Xiu-Tian/Peaceful-Eco-Launcher/releases) · [项目主页](https://github.com/Xiu-Tian/Peaceful-Eco-Launcher)
 
 本页仅保留当前版本的更新公告；实际可下载版本以 GitHub Releases 为准。
 
-## 1.0.9 Beta 更新
+## 1.1.0 Beta 更新
 
-- 窗口与界面：修复 Windows 11 上的界面显示异常，优化拖动窗口边缘或四角时的实时缩放，减少卡顿。
-- 账号登录：修复 LittleSkin 等外置登录异常，改善账号头像显示和第三方账号启动流程；正版登录检测到账号尚未创建 Java 版档案时，会提示用户并提供 Minecraft 官网入口。
-- 资源购物车：优化兼容性分析、必需前置检查和安装清单。CurseForge 作者关闭第三方分发时，仍可分析方案；受限文件可在内置浏览器逐个补齐，能直接下载的文件仍由启动器下载。
-- 模组配置预设：可按文件选择并保存模组配置，之后恢复到指定实例；覆盖前自动备份，不影响未选中的配置。
-- 实例安装：修复带加载器的新实例安装后残留辅助版本目录的问题。版本目录只保留指定名称的新实例，不清理已有实例或共享依赖。
-- 下载与启动体验：修复 OptiFine 下载源不返回文件长度时的失败，支持安全流式下载并校验 JAR，拒绝网页、截断和损坏文件；Fabric API 在确认是同一文件时优先使用 CurseForge，失败后回退 Modrinth。支持中断游戏启动，并可按实例复制最新日志。
-- 联机与主题：新增图文联机步骤，修复房主结束联机后未正常退出房主模式的问题；暂时锁定 Liquid Glass 的浅色和深色主题。
+- **下载体验：**优化下载速率，提升资源下载效率与整体体验。
+- **稳定性修复：**修复若干已知问题与漏洞，进一步提升启动器稳定性。
 
 ## 功能概览
 
@@ -111,4 +106,28 @@ PEL 联机目前支持 **Windows x64 和 Minecraft Java 版**。房主创建房�
 - **联机失败**：确认房主的游戏和房间仍在运行、游戏端口填写正确，并在联机页刷新状态。公共中转不可用时，可稍后重试。
 - **启动器或界面初始化失败**：查看 `Launcher\logs\bootstrap.log`、`Launcher\logs\startup-latest.txt` 和 `Launcher\logs\web.log`。
 - **诊断 WebView2 图形兼容问题**：完全退出 PEL 后，从 PowerShell 以 `PeacefulEcoLauncher.exe --pel-diagnostic-no-gpu` 启动一次。此参数只为本次 WebView2 启动传入 `--disable-gpu`，用于判断故障是否与 GPU/驱动有关，不会保存设置；将最新的 `Launcher\logs\launcher-*.log`、`launcher-errors.log` 和 `startup-latest.txt` 一并提供。
-- **联机桥接失败**：查看 `Launch
+- **联机桥接失败**：查看 `Launcher\multiplayer\logs\bridge.log`、`easytier.err.log` 和 EasyTier 日志。
+- **提交反馈**：通过启动器内的反馈入口描述复现步骤，并按需附上诊断日志或截图。发送前请确认附件内容适合分享。
+
+## GitHub 发布与自动更新
+
+PEL 启动时会检查更新，优先读取公开仓库中的静态清单：[`assets/update-manifest.json`](https://raw.githubusercontent.com/Xiu-Tian/Peaceful-Eco-Launcher/main/assets/update-manifest.json)。静态清单不可用时会回退到 GitHub Releases API。检查到新版后，用户仍需在启动器中确认下载，并点击重启安装；下载的 EXE 会先按 SHA-256 校验，通过后才替换旧版本。
+
+发布新版时按以下顺序操作：
+
+1. 将 `assets/version.txt` 改为新版本号，并在本文件顶部添加完全匹配的标题 `## <版本号> 更新` 和更新内容。
+2. 提交并推送版本号与 README 更新到 GitHub 的 `main` 分支，然后在项目目录运行 `npm run build`。
+3. 构建会生成 `build\PeacefulEcoLauncher.exe` 和更新后的 `assets\update-manifest.json`。清单会自动写入版本号、更新说明、下载地址、文件大小和 EXE 的 SHA-256。
+4. 在 GitHub 仓库的 **Releases → Draft a new release** 创建发行版：标签为版本号前加 `v`（版本号中的空格替换为连字符），标题使用 `PeacefulEcoLauncher <版本号>`。上传构建产物 `build\PeacefulEcoLauncher.exe`，资产名称必须保持为 **`PeacefulEcoLauncher.exe`**；仅 Alpha / Beta 版勾选 **Set as a pre-release**，稳定版不勾选，然后发布 Release，不能留作 Draft。
+5. 发布 Release 后，将构建生成的 `assets\update-manifest.json` 提交并推送到 `main`。先发布资产、后更新清单，可以避免启动器读到尚不存在的下载链接。
+6. 在旧版启动器中等待启动时检查，或打开更新页面点“检查更新”；确认后下载并重启安装。GitHub Release 的资产名、标签和清单 URL 必须一致，否则更新器会找不到或拒绝该更新。
+
+每次发布都要提高 `assets/version.txt` 的版本号，并用相同版本号的 README 标题生成更新说明。不要手工改清单里的 SHA-256 或资产大小，也不要把 EXE 重命名后上传。构建脚本生成的是稳定资产名 `PeacefulEcoLauncher.exe`；带版本号的本地副本不能代替该 Release 资产。
+
+中文资源名称索引及搜索行为参考 PCL-CE。相关来源与 Apache License 2.0 文本随构建产物提供，详见 `PCL-CE-SEARCH-NOTICE.txt` 和 `PCL-CE-APACHE-2.0.txt`。
+
+## 作者
+
+**EMOCHAN · F1xSky**
+
+感谢 Minecraft、Modrinth、CurseForge、PCL-CE、EasyTier 及相关开源项目和资源作者。
