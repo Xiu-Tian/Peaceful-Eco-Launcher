@@ -2,17 +2,17 @@
   "schemaVersion": 1,
   "releases": [
     {
-      "tag_name": "v1.1.0-Beta",
-      "name": "PeacefulEcoLauncher 1.1.0 Beta",
-      "body": "- **启动修复：**修复部分环境下 WebView2 用户数据目录路径异常导致启动失败的问题。\n- **数据兼容：**WebView2 配置优先存储在 LocalAppData；迁移旧配置时保留原目录。\n- **路径兼容：**改进 D 盘安装、相对 Runtime 路径及异常路径的处理和诊断。\n- **其他优化：**优化下载速率，修复若干已知问题。",
+      "tag_name": "v1.1.1-Beta",
+      "name": "PeacefulEcoLauncher 1.1.1 Beta",
+      "body": "- 修复部分资源无法下载的问题。\n- 优化整合包和资源购物车的模组下载：并行处理多个文件，优先下载预计更耗时的大文件。\n- 修复整合包导入时的长路径和同名资源索引冲突，避免覆盖已有版本的资源索引。\n- 修复正版账号登录失败的问题，并新增账号数据保护提示。\n- 发现可用更新时先弹窗确认，支持暂停提醒 7 天，或在设置中关闭自动检查。\n- 修复启动动画遮挡初始化失败和崩溃提示的问题。\n- 修复多项已知问题，提升启动器稳定性。",
       "draft": false,
       "prerelease": true,
       "assets": [
         {
           "name": "PeacefulEcoLauncher.exe",
-          "digest": "sha256:d0f6be15c96481f0dfd9f75cab40d791ec3e3ec13ed0105df15fca5ed41dad5a",
-          "size": 19904512,
-          "browser_download_url": "https://github.com/Xiu-Tian/Peaceful-Eco-Launcher/releases/download/v1.1.0-Beta/PeacefulEcoLauncher.exe"
+          "digest": "sha256:e92dc57acabdb9c99675e8803a826aaa89c21a9578729433245e8116608095b0",
+          "size": 19933696,
+          "browser_download_url": "https://github.com/Xiu-Tian/Peaceful-Eco-Launcher/releases/download/v1.1.1-Beta/PeacefulEcoLauncher.exe"
         }
       ]
     }
