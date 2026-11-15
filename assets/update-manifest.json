@@ -2,17 +2,17 @@
   "schemaVersion": 1,
   "releases": [
     {
-      "tag_name": "v1.1.2-Beta",
-      "name": "PeacefulEcoLauncher 1.1.2 Beta",
-      "body": "- 修复 WebView2 初始化失败导致启动器打不开的问题：定位到管理员令牌被 EXE 的完整性标签压到中等完整性，并取消了构建与 bootstrap 对启动器/payload 强制打中等标签的做法。\n- 诊断信息新增账户类型、提权状态、完整性级别、会话与用户数据目录证据（属主、锁文件、Crashpad、WebView2 进程），启动失败时直接给出可执行的处置建议。\n- 用户数据目录按提权状态隔离，并且只接受本地固定卷，避免提权会话与普通会话互相抢占同一目录导致界面起不来。\n- 修复关闭启动器后再次打开「没有窗口也没有反应」的问题：已有实例无法激活时不再静默退出，而是明确提示；关闭时的收尾等待也加了上限。\n- 修复下载过程中偶发崩溃：不再在超时回调里直接释放仍在读取的响应，避免触发 RPC/套接字层的未处理异常；同时不再覆盖已配置的 TLS 协议与连接上限。\n- 资源中心与购物车：作者关闭第三方分发的模组改为按官方 CDN 直链下载（SHA-1 校验不变）；修复旧版无加载器标签、快照版本与 LiteLoader 文件的版本检测，前置检测与安装入口不再被卡住。",
+      "tag_name": "v1.1.2-BetaFix",
+      "name": "PeacefulEcoLauncher 1.1.2 BetaFix",
+      "body": "- 下载：新增按内容（SHA-1）寻址的共享缓存，同一个文件在多个实例、多次安装之间直接复用，不再重复下载，也不额外占用磁盘空间；复用前会重新校验哈希，不匹配就退回正常下载。\n- 下载：大文件按体积自适应分片，8–32MB 用 8 片、32MB 以上用 12 片，改善高延迟线路下单个连接跑不满带宽的问题；小文件下载方式保持不变。\n- 下载：失败重试改为递增退避并加随机抖动，避免同一批分片在同一秒一起重试回同一个下载源。\n- 修复下载过程中偶发崩溃：不再在超时回调里直接释放仍在读取的响应，避免触发套接字层的未处理异常；同时不再覆盖已配置的 TLS 协议与连接上限。\n- 修复 WebView2 初始化失败导致启动器打不开的问题：定位到管理员令牌被 EXE 的完整性标签压到中等完整性，并取消了构建与 bootstrap 对启动器/payload 强制打中等标签的做法。\n- 诊断信息新增账户类型、提权状态、完整性级别、会话与用户数据目录证据（属主、锁文件、Crashpad、WebView2 进程），启动失败时直接给出可执行的处置建议；用户数据目录按提权状态隔离，并且只接受本地固定卷，避免提权会话与普通会话互相抢占同一目录。\n- 修复关闭启动器后再次打开「没有窗口也没有反应」的问题：已有实例无法激活时不再静默退出，而是明确提示；关闭时的收尾等待也加了上限。\n- 资源中心与购物车：作者关闭第三方分发的模组改为按官方 CDN 直链下载（SHA-1 校验不变）；修复旧版无加载器标签、快照版本与 LiteLoader 文件的版本检测，前置检测与安装入口不再被卡住。",
       "draft": false,
       "prerelease": true,
       "assets": [
         {
           "name": "PeacefulEcoLauncher.exe",
-          "digest": "sha256:b58f141fddb718039be2a24db6f0894e35aad2def0edf55b10c011ceffb49c74",
-          "size": 19951616,
-          "browser_download_url": "https://github.com/Xiu-Tian/Peaceful-Eco-Launcher/releases/download/v1.1.2-Beta/PeacefulEcoLauncher.exe"
+          "digest": "sha256:e7991e684886c648a07f4573df2a56fa65b6df5b432269fa528961f74f8ce93e",
+          "size": 19955200,
+          "browser_download_url": "https://github.com/Xiu-Tian/Peaceful-Eco-Launcher/releases/download/v1.1.2-BetaFix/PeacefulEcoLauncher.exe"
         }
       ]
     }
