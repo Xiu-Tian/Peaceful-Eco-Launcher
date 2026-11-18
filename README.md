@@ -2,22 +2,18 @@
 
 **Peaceful Eco Launcher（PEL）** 是面向 Minecraft Java 版的 Windows 启动器，提供游戏安装、实例管理、资源下载、Java 管理、账户登录和临时联机功能。
 
-- **当前版本：1.1.2 BetaFix**
+- **当前版本：1.1.3 Beta**
 - **适用平台：Windows x64**（推荐 Windows 10 / 11）
 - [下载发行版](https://github.com/Xiu-Tian/Peaceful-Eco-Launcher/releases) · [项目主页](https://github.com/Xiu-Tian/Peaceful-Eco-Launcher)
 
 本页仅保留当前版本的更新公告；实际可下载版本以 GitHub Releases 为准。
 
-## 1.1.2 BetaFix 更新
+## 1.1.3 Beta 更新
 
-- 下载：新增按内容（SHA-1）寻址的共享缓存，同一个文件在多个实例、多次安装之间直接复用，不再重复下载，也不额外占用磁盘空间；复用前会重新校验哈希，不匹配就退回正常下载。
-- 下载：大文件按体积自适应分片，8–32MB 用 8 片、32MB 以上用 12 片，改善高延迟线路下单个连接跑不满带宽的问题；小文件下载方式保持不变。
-- 下载：失败重试改为递增退避并加随机抖动，避免同一批分片在同一秒一起重试回同一个下载源。
-- 修复下载过程中偶发崩溃：不再在超时回调里直接释放仍在读取的响应，避免触发套接字层的未处理异常；同时不再覆盖已配置的 TLS 协议与连接上限。
-- 修复 WebView2 初始化失败导致启动器打不开的问题：定位到管理员令牌被 EXE 的完整性标签压到中等完整性，并取消了构建与 bootstrap 对启动器/payload 强制打中等标签的做法。
-- 诊断信息新增账户类型、提权状态、完整性级别、会话与用户数据目录证据（属主、锁文件、Crashpad、WebView2 进程），启动失败时直接给出可执行的处置建议；用户数据目录按提权状态隔离，并且只接受本地固定卷，避免提权会话与普通会话互相抢占同一目录。
-- 修复关闭启动器后再次打开「没有窗口也没有反应」的问题：已有实例无法激活时不再静默退出，而是明确提示；关闭时的收尾等待也加了上限。
-- 资源中心与购物车：作者关闭第三方分发的模组改为按官方 CDN 直链下载（SHA-1 校验不变）；修复旧版无加载器标签、快照版本与 LiteLoader 文件的版本检测，前置检测与安装入口不再被卡住。
+- 修复部分整合包（如「元素觉醒」）下载或导入失败的问题。
+- 修复部分界面元素错位的问题，改善弹窗与下拉菜单的显示。
+- 新增启动器窗口最大化与还原功能。
+- 优化下载引擎，改善批量下载的稳定性与重试体验。
 
 ## 功能概览
 
@@ -112,4 +108,31 @@ PEL 联机目前支持 **Windows x64 和 Minecraft Java 版**。房主创建房�
 ## 故障排查与日志
 
 - **游戏无法启动或 Java 不兼容**：查看启动提示中的 Java 主版本要求，在 Java 页面扫描或安装合适版本。
-- **联机失败**：确认房主的游戏和房间仍在运行、游戏端口填写正确，并在联
+- **联机失败**：确认房主的游戏和房间仍在运行、游戏端口填写正确，并在联机页刷新状态。公共中转不可用时，可稍后重试。
+- **启动器或界面初始化失败**：查看 `Launcher\logs\bootstrap.log`、`Launcher\logs\startup-latest.txt` 和 `Launcher\logs\web.log`。
+- **诊断 WebView2 图形兼容问题**：完全退出 PEL 后，从 PowerShell 以 `PeacefulEcoLauncher.exe --pel-diagnostic-no-gpu` 启动一次。此参数只为本次 WebView2 启动传入 `--disable-gpu`，用于判断故障是否与 GPU/驱动有关，不会保存设置；将最新的 `Launcher\logs\launcher-*.log`、`launcher-errors.log` 和 `startup-latest.txt` 一并提供。
+- **联机桥接失败**：查看 `Launcher\multiplayer\logs\bridge.log`、`easytier.err.log` 和 EasyTier 日志。
+- **提交反馈**：通过启动器内的反馈入口描述复现步骤，并按需附上诊断日志或截图。发送前请确认附件内容适合分享。
+
+## GitHub 发布与自动更新
+
+PEL 启动时优先读取 GitHub 的 [静态更新清单](https://raw.githubusercontent.com/Xiu-Tian/Peaceful-Eco-Launcher/main/assets/update-manifest.json)，不可用时回退 GitHub Releases API。发现新版后点击「立即更新」，在内置浏览器的[夸克分享页](https://pan.quark.cn/s/30adaf0cf935#/list/share)手动下载 EXE；若由夸克客户端接管，下载完成后选择「导入更新包」。PEL 以 GitHub 发布信息核对产品版本、SHA-256 和清单提供的大小，用户确认后由自带更新助手替换、重启并检查首屏；启动失败会尝试恢复旧版本。
+
+发布新版时按以下顺序操作：
+
+1. 将 `assets/version.txt` 改为新版本号，并在本文件顶部添加完全匹配的标题 `## <版本号> 更新` 和更新内容。
+2. 提交并推送版本号与 README 更新到 GitHub 的 `main` 分支，然后在项目目录运行 `npm run build`。
+3. 构建会生成 `build\PeacefulEcoLauncher.exe` 和更新后的 `assets\update-manifest.json`。清单会自动写入版本号、更新说明、下载地址、文件大小和 EXE 的 SHA-256。
+4. 在 GitHub 仓库的 **Releases → Draft a new release** 创建发行版：标签为版本号前加 `v`（版本号中的空格替换为连字符），标题使用 `PeacefulEcoLauncher <版本号>`。上传构建产物 `build\PeacefulEcoLauncher.exe`，资产名称必须保持为 **`PeacefulEcoLauncher.exe`**；仅 Alpha / Beta 版勾选 **Set as a pre-release**，稳定版不勾选，然后发布 Release，不能留作 Draft。
+5. 把**同一个构建产物**放进固定夸克分享目录，确认可下载后，再把构建生成的 `assets\update-manifest.json` 推送到 `main`。GitHub 资产和夸克文件必须逐字节一致，不能用同版本号重新构建的另一份 EXE。
+6. 在已支持夸克更新的较旧 PEL 中检查更新，分别验证内置下载和手动导入。仍使用旧更新机制的版本需要先手动换到支持夸克更新的版本；清单保留原 GitHub 资产字段以兼容已有检测和 API 回退。
+
+每次发布都要提高 `assets/version.txt` 的版本号，并用相同版本号的 README 标题生成更新说明。不要手工改清单里的 SHA-256 或资产大小，也不要把 EXE 重命名后上传。构建脚本生成的是稳定资产名 `PeacefulEcoLauncher.exe`；带版本号的本地副本不能代替该 Release 资产。
+
+中文资源名称索引及搜索行为参考 PCL-CE。相关来源与 Apache License 2.0 文本随构建产物提供，详见 `PCL-CE-SEARCH-NOTICE.txt` 和 `PCL-CE-APACHE-2.0.txt`。
+
+## 作者
+
+**EMOCHAN · F1xSky**
+
+感谢 Minecraft、Modrinth、CurseForge、PCL-CE、EasyTier 及相关开源项目和资源作者。
