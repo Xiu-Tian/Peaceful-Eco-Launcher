@@ -2,19 +2,16 @@
 
 **Peaceful Eco Launcher（PEL）** 是面向 Minecraft Java 版的 Windows 启动器，提供游戏安装、实例管理、资源下载、Java 管理、账户登录和临时联机功能。
 
-- **当前版本：1.1.3 Beta**
+- **当前版本：1.1.3 BetaFix**
 - **适用平台：Windows x64**（推荐 Windows 10 / 11）
 - [下载发行版](https://github.com/Xiu-Tian/Peaceful-Eco-Launcher/releases) · [项目主页](https://github.com/Xiu-Tian/Peaceful-Eco-Launcher)
 
 本页仅保留当前版本的更新公告。发行记录见 GitHub Releases；启动器内的更新包通过[夸克网盘](https://pan.quark.cn/s/30adaf0cf935#/list/share)下载。
 
-## 1.1.3 Beta 更新
+## 1.1.3 BetaFix 更新
 
-- 修复部分整合包（如「元素觉醒」）下载或导入失败的问题。
-- 修复部分界面元素错位的问题，改善弹窗与下拉菜单的显示。
-- 新增启动器窗口最大化与还原功能。
-- 优化下载引擎，改善批量下载的稳定性与重试体验。
-- 启动器更新改用内置夸克浏览器下载，进度同步到「下载与任务」页，校验通过后可重启安装。
+- 修复旧版游戏仍在磁盘、升级后却不显示的问题。可在「存储位置」检测并导入旧目录，无需重新下载，也不会移动游戏、模组或存档。
+- 移除临时的「测试下载」入口，保留正式更新、下载进度和手动导入更新包。
 
 ## 功能概览
 
@@ -35,7 +32,7 @@ Minecraft 下载器第一轮优化已处理 Fabric Maven 错误候选和慢元�
 
 PEL 可以管理多个 `.minecraft` 目录，并合并显示其中的游戏版本。游戏列表会标出版本来源，也可以把版本迁移到其他目录。
 
-在**存储位置**中可以手动添加目录，或检测 PCL2 / HMCL 的游戏目录。PCL2 检测会读取其 `LaunchFolders` 注册表配置，以及可靠定位到程序目录时对应 `PCL\Setup.ini` 中的当前目录设置；不要求 `Setup.ini` 必须存在。检测只读取原启动器配置，不会修改或移动原文件。只显示经过验证的游戏目录，并由用户手动确认导入；未找到有效配置时会说明原因，不会猜测游戏目录。
+在**存储位置 → 导入或找回游戏目录**中，可以检测 PCL2、HMCL 和 PEL 旧版游戏目录。PCL2 检测会读取其 `LaunchFolders` 注册表配置，以及可靠定位到程序目录时对应的 `PCL\Setup.ini`；不要求 `Setup.ini` 必须存在。升级后游戏不显示时，点击「检测目录」，勾选标为「PEL 旧版」的目录后导入。只登记原路径，不移动或删除文件；未检测到时仍可手动添加目录。
 
 PCL2 快捷方式仅用于辅助定位程序目录，不会被直接当作 Minecraft 游戏目录。
 
@@ -117,9 +114,9 @@ PEL 联机目前支持 **Windows x64 和 Minecraft Java 版**。房主创建房�
 
 ## GitHub 发布与自动更新
 
-PEL 启动时优先读取 GitHub 的 [静态更新清单](https://raw.githubusercontent.com/Xiu-Tian/Peaceful-Eco-Launcher/main/assets/update-manifest.json)，不可用时回退 GitHub Releases API。发现新版后点击「立即更新」，在内置浏览器的[夸克分享页](https://pan.quark.cn/s/30adaf0cf935#/list/share)手动下载 EXE；若由夸克客户端接管，下载完成后选择「导入更新包」。PEL 以 GitHub 发布信息核对产品版本、SHA-256 和清单提供的大小，用户确认后由自带更新助手替换、重启并检查首屏；启动失败会尝试恢复旧版本。
+PEL 启动时优先读取 GitHub 的 [静态更新清单](https://raw.githubusercontent.com/Xiu-Tian/Peaceful-Eco-Launcher/main/assets/update-manifest.json)，不可用时回退 GitHub Releases API。发现新版后点击「立即更新」，在内置浏览器的[夸克分享页](https://pan.quark.cn/s/30adaf0cf935#/list/share)手动下载对应的 EXE。仅接受较新版本，并按 GitHub 发布信息校验 SHA-256 和 EXE 产品版本；文件大小仅用于进度展示和下载上限检查，不作为文件身份依据。
 
-「下载与任务」页会单独显示启动器更新，不影响游戏或模组任务。内置浏览器下载时会同步已下载大小和进度；总大小未知时不显示百分比，校验通过后才显示 100% 和「重启并安装」。若下载由夸克客户端接管，PEL 无法读取客户端进度，需要手动导入下载好的 EXE。
+夸克网页实际开始下载时，PEL 会自动切到「下载与任务」；总大小未知时不显示百分比。点击「立即更新」即授权校验通过后由更新助手自动替换、重启并检查首屏；新版本启动失败会尝试恢复旧版。有游戏任务运行时不会强制重启，可稍后手动安装。若下载由夸克客户端接管，PEL 无法读取客户端进度，请下载后选择「导入更新包」，并在校验通过后确认安装。
 
 发布新版时按以下顺序操作：
 
@@ -128,7 +125,7 @@ PEL 启动时优先读取 GitHub 的 [静态更新清单](https://raw.githubuser
 3. 构建会生成 `build\PeacefulEcoLauncher.exe` 和更新后的 `assets\update-manifest.json`。清单会自动写入版本号、更新说明、下载地址、文件大小和 EXE 的 SHA-256。
 4. 在 GitHub 仓库的 **Releases → Draft a new release** 创建发行版：标签为版本号前加 `v`（版本号中的空格替换为连字符），标题使用 `PeacefulEcoLauncher <版本号>`。上传构建产物 `build\PeacefulEcoLauncher.exe`，资产名称必须保持为 **`PeacefulEcoLauncher.exe`**；仅 Alpha / Beta 版勾选 **Set as a pre-release**，稳定版不勾选，然后发布 Release，不能留作 Draft。
 5. 把**同一个构建产物**放进固定夸克分享目录，确认可下载后，再把构建生成的 `assets\update-manifest.json` 推送到 `main`。GitHub 资产和夸克文件必须逐字节一致，不能用同版本号重新构建的另一份 EXE。
-6. 在已支持夸克更新的较旧 PEL 中检查更新，分别验证内置下载和手动导入。仍使用旧更新机制的版本需要先手动换到支持夸克更新的版本；清单保留原 GitHub 资产字段以兼容已有检测和 API 回退。
+6. 在普通用户可写的独立目录中，用已支持夸克更新的较旧 PEL 分别验证内置下载和手动导入，不要直接在带沙盒权限限制的构建目录里验证 EXE 替换。仍使用旧更新机制的版本需要先手动换到支持夸克更新的版本；清单保留原 GitHub 资产字段以兼容已有检测和 API 回退。
 
 每次发布都要提高 `assets/version.txt` 的版本号，并用相同版本号的 README 标题生成更新说明。不要手工改清单里的 SHA-256 或资产大小，也不要把 EXE 重命名后上传。构建脚本生成的是稳定资产名 `PeacefulEcoLauncher.exe`；带版本号的本地副本不能代替该 Release 资产。
 
