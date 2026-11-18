@@ -6,7 +6,7 @@
 - **适用平台：Windows x64**（推荐 Windows 10 / 11）
 - [下载发行版](https://github.com/Xiu-Tian/Peaceful-Eco-Launcher/releases) · [项目主页](https://github.com/Xiu-Tian/Peaceful-Eco-Launcher)
 
-本页仅保留当前版本的更新公告；实际可下载版本以 GitHub Releases 为准。
+本页仅保留当前版本的更新公告。发行记录见 GitHub Releases；启动器内的更新包通过[夸克网盘](https://pan.quark.cn/s/30adaf0cf935#/list/share)下载。
 
 ## 1.1.3 Beta 更新
 
@@ -14,6 +14,7 @@
 - 修复部分界面元素错位的问题，改善弹窗与下拉菜单的显示。
 - 新增启动器窗口最大化与还原功能。
 - 优化下载引擎，改善批量下载的稳定性与重试体验。
+- 启动器更新改用内置夸克浏览器下载，进度同步到「下载与任务」页，校验通过后可重启安装。
 
 ## 功能概览
 
@@ -117,6 +118,8 @@ PEL 联机目前支持 **Windows x64 和 Minecraft Java 版**。房主创建房�
 ## GitHub 发布与自动更新
 
 PEL 启动时优先读取 GitHub 的 [静态更新清单](https://raw.githubusercontent.com/Xiu-Tian/Peaceful-Eco-Launcher/main/assets/update-manifest.json)，不可用时回退 GitHub Releases API。发现新版后点击「立即更新」，在内置浏览器的[夸克分享页](https://pan.quark.cn/s/30adaf0cf935#/list/share)手动下载 EXE；若由夸克客户端接管，下载完成后选择「导入更新包」。PEL 以 GitHub 发布信息核对产品版本、SHA-256 和清单提供的大小，用户确认后由自带更新助手替换、重启并检查首屏；启动失败会尝试恢复旧版本。
+
+「下载与任务」页会单独显示启动器更新，不影响游戏或模组任务。内置浏览器下载时会同步已下载大小和进度；总大小未知时不显示百分比，校验通过后才显示 100% 和「重启并安装」。若下载由夸克客户端接管，PEL 无法读取客户端进度，需要手动导入下载好的 EXE。
 
 发布新版时按以下顺序操作：
 
