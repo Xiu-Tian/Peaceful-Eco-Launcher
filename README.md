@@ -2,16 +2,18 @@
 
 **Peaceful Eco Launcher（PEL）** 是面向 Minecraft Java 版的 Windows 启动器，提供游戏安装、实例管理、资源下载、Java 管理、账户登录和临时联机功能。
 
-- **当前版本：1.1.3 BetaFix**
+- **当前版本：1.1.4 Beta**
 - **适用平台：Windows x64**（推荐 Windows 10 / 11）
 - [下载发行版](https://github.com/Xiu-Tian/Peaceful-Eco-Launcher/releases) · [项目主页](https://github.com/Xiu-Tian/Peaceful-Eco-Launcher)
 
 本页仅保留当前版本的更新公告。发行记录见 GitHub Releases；启动器内的更新包通过[夸克网盘](https://pan.quark.cn/s/30adaf0cf935#/list/share)下载。
 
-## 1.1.3 BetaFix 更新
+## 1.1.4 Beta 更新
 
-- 修复旧版游戏仍在磁盘、升级后却不显示的问题。可在「存储位置」检测并导入旧目录，无需重新下载，也不会移动游戏、模组或存档。
-- 移除临时的「测试下载」入口，保留正式更新、下载进度和手动导入更新包。
+- 进一步优化下载引擎，改善线路切换与断点续传表现。
+- 减少大文件的重复下载，改善部分整合包在最后几个文件上的等待时间。
+- 修复下载缓存长期残留的问题。新版启动时会清理旧版遗留的共享缓存，下载成功后也会自动清理，不影响已安装的游戏和存档。
+- 修复若干已知问题，提升启动器稳定性。
 
 ## 功能概览
 
@@ -111,6 +113,18 @@ PEL 联机目前支持 **Windows x64 和 Minecraft Java 版**。房主创建房�
 - **诊断 WebView2 图形兼容问题**：完全退出 PEL 后，从 PowerShell 以 `PeacefulEcoLauncher.exe --pel-diagnostic-no-gpu` 启动一次。此参数只为本次 WebView2 启动传入 `--disable-gpu`，用于判断故障是否与 GPU/驱动有关，不会保存设置；将最新的 `Launcher\logs\launcher-*.log`、`launcher-errors.log` 和 `startup-latest.txt` 一并提供。
 - **联机桥接失败**：查看 `Launcher\multiplayer\logs\bridge.log`、`easytier.err.log` 和 EasyTier 日志。
 - **提交反馈**：通过启动器内的反馈入口描述复现步骤，并按需附上诊断日志或截图。发送前请确认附件内容适合分享。
+
+## 开发者构建
+
+在 Windows x64 环境安装 Node.js 20 或更高版本，并确保网络可访问后，在项目目录运行：
+
+```powershell
+npm run setup:vendor
+node scripts/get-tcc.mjs
+npm run build
+```
+
+构建产物为 `build\PeacefulEcoLauncher.exe`。构建脚本会下载所需的 WebView2、Roslyn 和 TinyCC 构建依赖；这些构建工具不需要随发行版提供。
 
 ## GitHub 发布与自动更新
 
