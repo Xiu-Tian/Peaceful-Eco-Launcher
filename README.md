@@ -2,18 +2,16 @@
 
 **Peaceful Eco Launcher（PEL）** 是面向 Minecraft Java 版的 Windows 启动器，提供游戏安装、实例管理、资源下载、Java 管理、账户登录和临时联机功能。
 
-- **当前版本：1.1.5 Beta**
+- **当前版本：1.1.5 BetaFix**
 - **适用平台：Windows x64**（推荐 Windows 10 / 11）
 - [下载发行版](https://github.com/Xiu-Tian/Peaceful-Eco-Launcher/releases) · [项目主页](https://github.com/Xiu-Tian/Peaceful-Eco-Launcher)
 
 本页仅保留当前版本的更新公告。发行记录见 GitHub Releases；启动器内的更新包通过[夸克网盘](https://pan.quark.cn/s/30adaf0cf935#/list/share)下载。
 
-## 1.1.5 Beta 更新
+## 1.1.5 BetaFix 更新
 
-- 修复键位配置管理的实例列表显示不全的问题；键位和模组配置管理现均可识别多个已添加的游戏目录。
-- 修复下载 Fabric 模组时，自动安装的前置版本与模组要求不匹配的问题。
-- 修复部分界面布局错位，以及切换主题时点击波纹溢出的问题。
-- 修复正版账号的皮肤头像在启动器内无法显示的问题。
+- 修复 RLCraft 等部分整合包因 Forge 运行库缺失而无法安装或启动的问题。
+- 修复部分网络环境下 Java 自动下载失败的问题。自动下载现在会在两个官方源之间切换，不再依赖 GitHub。
 - 修复若干已知问题，提升启动器稳定性。
 
 ## 功能概览
