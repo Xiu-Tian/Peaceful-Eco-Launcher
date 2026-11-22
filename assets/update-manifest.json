@@ -2,17 +2,17 @@
   "schemaVersion": 1,
   "releases": [
     {
-      "tag_name": "v1.1.5-BetaFix",
-      "name": "PeacefulEcoLauncher 1.1.5 BetaFix",
-      "body": "- 修复 RLCraft 等部分整合包因 Forge 运行库缺失而无法安装或启动的问题。\n- 修复部分网络环境下 Java 自动下载失败的问题。自动下载现在会在两个官方源之间切换，不再依赖 GitHub。\n- 修复若干已知问题，提升启动器稳定性。",
+      "tag_name": "v1.1.6-Beta",
+      "name": "PeacefulEcoLauncher 1.1.6 Beta",
+      "body": "- 优化资源下载流程，简化操作步骤。\n- 修复部分界面元素错位的问题。\n- 调整主页布局，重新排布时钟与时间信息。\n- 修复部分情况下的账号登录失败问题。\n- 修复部分场景下下载失败的问题。\n- 修复其他若干已知问题。",
       "draft": false,
       "prerelease": true,
       "assets": [
         {
           "name": "PeacefulEcoLauncher.exe",
-          "digest": "sha256:f19f9230eb42e85caa0bbf216685b2db33ae49b173c48d90fa0d612cf9d93ae1",
-          "size": 20014080,
-          "browser_download_url": "https://github.com/Xiu-Tian/Peaceful-Eco-Launcher/releases/download/v1.1.5-BetaFix/PeacefulEcoLauncher.exe"
+          "digest": "sha256:acf46ed5fab4102dbd8781d643da39aed3083eb29605892fbdc98badef7d5fc3",
+          "size": 20048896,
+          "browser_download_url": "https://github.com/Xiu-Tian/Peaceful-Eco-Launcher/releases/download/v1.1.6-Beta/PeacefulEcoLauncher.exe"
         }
       ]
     }
