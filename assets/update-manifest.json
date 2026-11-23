@@ -2,17 +2,17 @@
   "schemaVersion": 1,
   "releases": [
     {
-      "tag_name": "v1.1.6-BetaFix",
-      "name": "PeacefulEcoLauncher 1.1.6 BetaFix",
-      "body": "- 整合包下载原版资源遇到连续超时或断线时，会自动降低并发，补下载没完成的文件。\n- 安装向导和资源购物车现在能显示明确兼容 Forge 的 OptiFine 预览版。\n- 修复任务页「写入位置」误显示为默认游戏目录的问题。\n- 改进版本首页的中文摘要：没有中文时先显示原文，翻译完成后自动更新。\n- 在夸克更新页面补充登录、选择文件和下载的操作提示。\n- 修正「意见反馈」窗口右上角的关闭图标位置。",
+      "tag_name": "v1.1.7-Beta",
+      "name": "PeacefulEcoLauncher 1.1.7 Beta",
+      "body": "- 修复 Microsoft 正版账号无法登录的问题。\n- 修复了大多数下载整合包时遗漏模组的问题。\n- 修复原版和加载器版本同时安装时，部分版本未显示在列表中的问题。\n- 优化资源页的模组检查逻辑。\n- 修复其他若干问题。",
       "draft": false,
       "prerelease": true,
       "assets": [
         {
           "name": "PeacefulEcoLauncher.exe",
-          "digest": "sha256:212eddf4e98d160e2ccd9220110cd07460b158694cff459f0774aeb032728101",
-          "size": 20054528,
-          "browser_download_url": "https://github.com/Xiu-Tian/Peaceful-Eco-Launcher/releases/download/v1.1.6-BetaFix/PeacefulEcoLauncher.exe"
+          "digest": "sha256:39ec4dad0e6880d494978a57c0e2faa9fe5da13738f7fe39fc733fa11c98640f",
+          "size": 20105216,
+          "browser_download_url": "https://github.com/Xiu-Tian/Peaceful-Eco-Launcher/releases/download/v1.1.7-Beta/PeacefulEcoLauncher.exe"
         }
       ]
     }
