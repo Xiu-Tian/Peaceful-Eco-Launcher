@@ -2,17 +2,17 @@
   "schemaVersion": 1,
   "releases": [
     {
-      "tag_name": "v1.1.6-Beta",
-      "name": "PeacefulEcoLauncher 1.1.6 Beta",
-      "body": "- 优化资源下载流程，简化操作步骤。\n- 修复部分界面元素错位的问题。\n- 调整主页布局，重新排布时钟与时间信息。\n- 修复部分情况下的账号登录失败问题。\n- 修复部分场景下下载失败的问题。\n- 修复其他若干已知问题。",
+      "tag_name": "v1.1.6-BetaFix",
+      "name": "PeacefulEcoLauncher 1.1.6 BetaFix",
+      "body": "- 整合包下载原版资源遇到连续超时或断线时，会自动降低并发，补下载没完成的文件。\n- 安装向导和资源购物车现在能显示明确兼容 Forge 的 OptiFine 预览版。\n- 修复任务页「写入位置」误显示为默认游戏目录的问题。\n- 改进版本首页的中文摘要：没有中文时先显示原文，翻译完成后自动更新。\n- 在夸克更新页面补充登录、选择文件和下载的操作提示。\n- 修正「意见反馈」窗口右上角的关闭图标位置。",
       "draft": false,
       "prerelease": true,
       "assets": [
         {
           "name": "PeacefulEcoLauncher.exe",
-          "digest": "sha256:acf46ed5fab4102dbd8781d643da39aed3083eb29605892fbdc98badef7d5fc3",
-          "size": 20048896,
-          "browser_download_url": "https://github.com/Xiu-Tian/Peaceful-Eco-Launcher/releases/download/v1.1.6-Beta/PeacefulEcoLauncher.exe"
+          "digest": "sha256:212eddf4e98d160e2ccd9220110cd07460b158694cff459f0774aeb032728101",
+          "size": 20054528,
+          "browser_download_url": "https://github.com/Xiu-Tian/Peaceful-Eco-Launcher/releases/download/v1.1.6-BetaFix/PeacefulEcoLauncher.exe"
         }
       ]
     }
