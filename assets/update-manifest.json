@@ -2,17 +2,17 @@
   "schemaVersion": 1,
   "releases": [
     {
-      "tag_name": "v1.1.7-BetaFix",
-      "name": "PeacefulEcoLauncher 1.1.7 BetaFix",
-      "body": "- 修复启动器会突然闪退的问题（网络超时后遗留的异常在后台把进程带崩）。\n- 修复整合包安装时 Forge 安装步骤报「Patch expected」等错误的问题，失败时直接给出原因和所用 Java 版本。\n- 修复下载中断后留下空文件却被当成已安装、导致游戏启动崩溃的问题；启动前会先检查并自动修好。\n- 修复通过镜像下载游戏本体时请求全部 404、白白等待的问题。\n- 修复资源页切换加载器或游戏版本时重复检测前置、需要等很久的问题。\n- 修复第一次打开模组详情只显示一个文件版本的问题。\n- 修复崩溃报告窗口「复制」按钮提示复制失败的问题。\n- 修复实例里指定的 Java 失效后无法启动的问题，现在会自动改用可用的 Java。",
+      "tag_name": "v1.1.7-BetaFix2",
+      "name": "PeacefulEcoLauncher 1.1.7 BetaFix2",
+      "body": "- **重要：新增启动前完整性检查与自动修复。** 启动游戏前检查游戏本体和运行库，发现缺失或损坏时自动补全；检测到 Forge / NeoForge 客户端核心损坏时自动重建。\n- **优化资源中心加载速度。** 模组首页只从 Modrinth 读取，有缓存时优先显示；搜索和下载仍支持 CurseForge。\n- **修复模组下载时的版本选择异常。** 详情只列出模组支持的 Minecraft 版本，选定版本后才加载对应文件。\n- **修复若干已知问题，提升启动器稳定性。**",
       "draft": false,
       "prerelease": true,
       "assets": [
         {
           "name": "PeacefulEcoLauncher.exe",
-          "digest": "sha256:2bbd76e3fdea56189e2dc7cb0f819622112c39de518f3c33b018cea25caf3bd8",
-          "size": 20106752,
-          "browser_download_url": "https://github.com/Xiu-Tian/Peaceful-Eco-Launcher/releases/download/v1.1.7-BetaFix/PeacefulEcoLauncher.exe"
+          "digest": "sha256:796d68fef68828c8a07af0e9001525bee7a85336099d9c97251f0839c389bca6",
+          "size": 20118016,
+          "browser_download_url": "https://github.com/Xiu-Tian/Peaceful-Eco-Launcher/releases/download/v1.1.7-BetaFix2/PeacefulEcoLauncher.exe"
         }
       ]
     }
