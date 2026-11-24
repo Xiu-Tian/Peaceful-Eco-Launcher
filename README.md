@@ -2,11 +2,18 @@
 
 PEL 是一个 Windows 上的 Minecraft Java 版启动器。装游戏、找模组、理存档，或者临时开个房间和朋友玩，都可以在这里完成。
 
-**当前版本：1.1.7 BetaFix** · **适用系统：Windows 10 / 11（x64）**
+**当前版本：1.1.7 BetaFix2** · **适用系统：Windows 10 / 11（x64）**
 
 [下载启动器（GitHub Releases）](https://github.com/Xiu-Tian/Peaceful-Eco-Launcher/releases) · [夸克网盘](https://pan.quark.cn/s/30adaf0cf935#/list/share)
 
 PEL 不开源。GitHub 页面用于提供下载和版本公告，不提供启动器源码。
+
+## 1.1.7 BetaFix2 更新
+
+- **重要：新增启动前完整性检查与自动修复。** 启动游戏前检查游戏本体和运行库，发现缺失或损坏时自动补全；检测到 Forge / NeoForge 客户端核心损坏时自动重建。
+- **优化资源中心加载速度。** 模组首页只从 Modrinth 读取，有缓存时优先显示；搜索和下载仍支持 CurseForge。
+- **修复模组下载时的版本选择异常。** 详情只列出模组支持的 Minecraft 版本，选定版本后才加载对应文件。
+- **修复若干已知问题，提升启动器稳定性。**
 
 ## 1.1.7 BetaFix 更新
 
