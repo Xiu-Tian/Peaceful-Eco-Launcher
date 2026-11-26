@@ -2,17 +2,17 @@
   "schemaVersion": 1,
   "releases": [
     {
-      "tag_name": "v1.1.8-BetaFix",
-      "name": "PeacefulEcoLauncher 1.1.8 BetaFix",
-      "body": "- **提升 Forge / NeoForge 安装与修复稳定性。** 复用前校验安装器和运行库，发现损坏则重新获取；启动前也能检测并重建缺失的客户端核心。\n- **修复 Fabric 安装时部分运行库下载失败的问题。** 校验所选版本的加载器配置；镜像数据不正确时回退官方。ASM 运行库支持同版本备用下载源，并校验 SHA-1 和文件大小。\n- **统一新版文件和版本标记的 PEL 命名。** 便携模式标记、OptiFine 安装助手和新实例元数据改用 PEL 命名；旧标记和已有实例仍可识别，无需手动改名。",
+      "tag_name": "v1.1.9",
+      "name": "PeacefulEcoLauncher 1.1.9",
+      "body": "- 购物车现在可以一次给已有游戏实例装多个模组，不用重装游戏。\n- 兼容性检查更快。不支持当前版本的模组会直接列出来。\n- 少量游戏资源下载超时时，会自动补下载失败项，不用从头再来。\n- 修复部分 Fabric 安装失败的问题，并改进 Forge / NeoForge 的安装和启动前修复。",
       "draft": false,
-      "prerelease": true,
+      "prerelease": false,
       "assets": [
         {
           "name": "PeacefulEcoLauncher.exe",
-          "digest": "sha256:dc7c3d337d9a3032aa999468f48106d0cada879aa21d138f1cab98e3a5bef377",
-          "size": 20163072,
-          "browser_download_url": "https://github.com/Xiu-Tian/Peaceful-Eco-Launcher/releases/download/v1.1.8-BetaFix/PeacefulEcoLauncher.exe"
+          "digest": "sha256:540ea818a1fc576086f5b2417ff5016a3a15067c46d48b6640735976508b664b",
+          "size": 20182016,
+          "browser_download_url": "https://github.com/Xiu-Tian/Peaceful-Eco-Launcher/releases/download/v1.1.9/PeacefulEcoLauncher.exe"
         }
       ]
     }
