@@ -2,17 +2,17 @@
   "schemaVersion": 1,
   "releases": [
     {
-      "tag_name": "v1.1.9-Beta",
-      "name": "PeacefulEcoLauncher 1.1.9 Beta",
-      "body": "- 购物车现在可以一次给已有游戏实例装多个模组，不用重装游戏。\n- 兼容性检查更快。不支持当前版本的模组会直接列出来。\n- 少量游戏资源下载超时时，会自动补下载失败项，不用从头再来。\n- 修复部分 Fabric 安装失败的问题，并改进 Forge / NeoForge 的安装和启动前修复。",
+      "tag_name": "v1.2.0-Beta",
+      "name": "PeacefulEcoLauncher 1.2.0 Beta",
+      "body": "- 设置页新增“立即清理”和“深度清理”按钮，按需清理系统内存，不清理启动器和 WebView2。\n- 正版账号新增皮肤库，可保存已用皮肤并快速切换。\n- 模组管理支持批量启用和禁用。\n- 优化模组配置管理体验。\n- 修复若干问题，提升稳定性。",
       "draft": false,
       "prerelease": true,
       "assets": [
         {
           "name": "PeacefulEcoLauncher.exe",
-          "digest": "sha256:65f70fe6b24af333b448cd0c8476a7b1a76f469ed40ccf76a59e8274cbcd3d8d",
-          "size": 20182016,
-          "browser_download_url": "https://github.com/Xiu-Tian/Peaceful-Eco-Launcher/releases/download/v1.1.9-Beta/PeacefulEcoLauncher.exe"
+          "digest": "sha256:d14b45450455409bba09b31b47fac4e3c2af6aa61f1de3d9beef867b07d10064",
+          "size": 20218880,
+          "browser_download_url": "https://github.com/Xiu-Tian/Peaceful-Eco-Launcher/releases/download/v1.2.0-Beta/PeacefulEcoLauncher.exe"
         }
       ]
     }
