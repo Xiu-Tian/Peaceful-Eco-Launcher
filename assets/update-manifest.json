@@ -2,17 +2,17 @@
   "schemaVersion": 1,
   "releases": [
     {
-      "tag_name": "v1.2.0-Beta",
-      "name": "PeacefulEcoLauncher 1.2.0 Beta",
-      "body": "- 设置页新增“立即清理”和“深度清理”按钮，按需清理系统内存，不清理启动器和 WebView2。\n- 正版账号新增皮肤库，可保存已用皮肤并快速切换。\n- 模组管理支持批量启用和禁用。\n- 优化模组配置管理体验。\n- 修复若干问题，提升稳定性。",
+      "tag_name": "v1.2.1-Beta",
+      "name": "PeacefulEcoLauncher 1.2.1 Beta",
+      "body": "- 优化正版账号的保存机制。\n- 修复部分情况下的下载问题。\n- 修复部分情况下游戏启动失败的问题。\n- 注：下一个版本我重点观察下载QWQ",
       "draft": false,
       "prerelease": true,
       "assets": [
         {
           "name": "PeacefulEcoLauncher.exe",
-          "digest": "sha256:d14b45450455409bba09b31b47fac4e3c2af6aa61f1de3d9beef867b07d10064",
-          "size": 20218880,
-          "browser_download_url": "https://github.com/Xiu-Tian/Peaceful-Eco-Launcher/releases/download/v1.2.0-Beta/PeacefulEcoLauncher.exe"
+          "digest": "sha256:ef8b6f55c263892501a057f27842738e43cc58e116cde492cb85dcf462878091",
+          "size": 20265984,
+          "browser_download_url": "https://github.com/Xiu-Tian/Peaceful-Eco-Launcher/releases/download/v1.2.1-Beta/PeacefulEcoLauncher.exe"
         }
       ]
     }
